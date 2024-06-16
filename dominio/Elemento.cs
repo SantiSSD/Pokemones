@@ -11,7 +11,7 @@ namespace winform_app
         {
             public int Id { get; set; }
             public string Descripcion { get; set; }
-        //prueba github repositorio
+        
 
             public override string ToString()
             {
