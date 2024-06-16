@@ -33,6 +33,7 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnEliminarFisico = new System.Windows.Forms.Button();
+            this.btnEliminarLogico = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPokemon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPokemon)).BeginInit();
             this.SuspendLayout();
@@ -41,11 +42,11 @@
             // 
             this.dgvPokemon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPokemon.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvPokemon.Location = new System.Drawing.Point(161, 72);
+            this.dgvPokemon.Location = new System.Drawing.Point(12, 72);
             this.dgvPokemon.MultiSelect = false;
             this.dgvPokemon.Name = "dgvPokemon";
             this.dgvPokemon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPokemon.Size = new System.Drawing.Size(453, 229);
+            this.dgvPokemon.Size = new System.Drawing.Size(602, 229);
             this.dgvPokemon.TabIndex = 0;
             this.dgvPokemon.SelectionChanged += new System.EventHandler(this.dgvPokemon_SelectionChanged);
             // 
@@ -60,7 +61,7 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(161, 307);
+            this.btnAgregar.Location = new System.Drawing.Point(12, 307);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(103, 37);
             this.btnAgregar.TabIndex = 2;
@@ -70,7 +71,7 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(287, 307);
+            this.btnModificar.Location = new System.Drawing.Point(121, 307);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(103, 37);
             this.btnModificar.TabIndex = 3;
@@ -80,7 +81,7 @@
             // 
             // btnEliminarFisico
             // 
-            this.btnEliminarFisico.Location = new System.Drawing.Point(396, 307);
+            this.btnEliminarFisico.Location = new System.Drawing.Point(265, 307);
             this.btnEliminarFisico.Name = "btnEliminarFisico";
             this.btnEliminarFisico.Size = new System.Drawing.Size(103, 37);
             this.btnEliminarFisico.TabIndex = 4;
@@ -88,11 +89,22 @@
             this.btnEliminarFisico.UseVisualStyleBackColor = true;
             this.btnEliminarFisico.Click += new System.EventHandler(this.btnEliminarFisico_Click);
             // 
+            // btnEliminarLogico
+            // 
+            this.btnEliminarLogico.Location = new System.Drawing.Point(374, 307);
+            this.btnEliminarLogico.Name = "btnEliminarLogico";
+            this.btnEliminarLogico.Size = new System.Drawing.Size(103, 37);
+            this.btnEliminarLogico.TabIndex = 5;
+            this.btnEliminarLogico.Text = "Eliminar Logico";
+            this.btnEliminarLogico.UseVisualStyleBackColor = true;
+            this.btnEliminarLogico.Click += new System.EventHandler(this.btnEliminarLogico_Click);
+            // 
             // frmPokemon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnEliminarLogico);
             this.Controls.Add(this.btnEliminarFisico);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnAgregar);
@@ -114,6 +126,7 @@
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnEliminarFisico;
+        private System.Windows.Forms.Button btnEliminarLogico;
     }
 }
 
