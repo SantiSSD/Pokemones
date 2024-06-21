@@ -54,18 +54,18 @@ namespace winform_app
             dgvPokemon.Columns["UrlImagen"].Visible = false;
             dgvPokemon.Columns["Id"].Visible = false;
         }
-        
+
 
         private void dgvPokemon_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvPokemon.CurrentRow != null)
             {
-              Pokemon seleccionado =  (Pokemon)dgvPokemon.CurrentRow.DataBoundItem;
-              cargarImagen(seleccionado.UrlImagen);
+                Pokemon seleccionado = (Pokemon)dgvPokemon.CurrentRow.DataBoundItem;
+                cargarImagen(seleccionado.UrlImagen);
 
             }
         }
-        private void cargarImagen(string imagen) 
+        private void cargarImagen(string imagen)
         {
             try
             {
@@ -91,7 +91,7 @@ namespace winform_app
         private void btnModificar_Click(object sender, EventArgs e)
         {
             Pokemon seleccionado;
-            seleccionado = (Pokemon) dgvPokemon.CurrentRow.DataBoundItem;
+            seleccionado = (Pokemon)dgvPokemon.CurrentRow.DataBoundItem;
             frmAltaPokemon modificar = new frmAltaPokemon(seleccionado);
             modificar.ShowDialog();
             cargar();
@@ -107,7 +107,7 @@ namespace winform_app
             eliminar(true);
         }
 
-        private void eliminar(bool logico = false) 
+        private void eliminar(bool logico = false)
         {
             PokemonNegocio negocio = new PokemonNegocio();
             Pokemon seleccionado;
@@ -125,7 +125,7 @@ namespace winform_app
                     {
                         negocio.eliminar(seleccionado.Id);
                     }
-                   
+
 
                     cargar();
                 }
@@ -138,7 +138,7 @@ namespace winform_app
             }
         }
 
-      
+
         private void txtFiltro_TextChanged(object sender, EventArgs e)
         {
             List<Pokemon> listaFiltrada;
@@ -178,12 +178,63 @@ namespace winform_app
                 cboCriterio.Items.Add("Contiene");
             }
         }
+        private bool validarFiltro() 
+         
+        {
+        if(cboCampo.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor, seleccione el campo filtrar.");
+                return true;
+            }
+            if (cboCriterio.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor, seleccione el criterio filtrar.");
+                return true;
+            }
+            if (cboCampo.SelectedItem.ToString() == "Número")
+            {
+                if (string.IsNullOrEmpty(txtFiltroAvanzado.Text))
+                {
+                    MessageBox.Show("Debes cargar el filtro para númericos...");
+                    return true;
+                }
+                if (!(SoloNumeros(txtFiltroAvanzado.Text)))
+                {
+
+                    MessageBox.Show("Solo numeros para filtrar en un campo numérico...");
+                 return true;
+
+                }
+            }
+
+
+            return false;
+        }
+
+        private bool SoloNumeros(string cadena) 
+        {
+            foreach (char caracter in cadena  )
+            {
+                if (!(char.IsNumber(caracter)))
+                {
+                    return false;
+                }
+            }
+                return true;
+         
+        }
 
         private void BtnFiltro_Click(object sender, EventArgs e)
         {
             PokemonNegocio negocio = new PokemonNegocio();
             try
             {
+                if (validarFiltro())
+                    return;
+
+                
+
+
             string campo = cboCampo.SelectedItem.ToString();
             string criterio = cboCriterio.SelectedItem.ToString(); 
             string filtro = txtFiltroAvanzado.Text;
